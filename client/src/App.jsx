@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import { About, Home, Login } from './pages';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  return (
+    <main className="bg-slate-300/20">
+      <Router>
+        <AppContent />
+      </Router>
+    </main>
+  );
+};
+
+const AppContent = () => {
+  const location = useLocation();
+
+  // Check if the current location is '/login'
+  const isLoginPage = location.pathname === '/login';
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* Render Navbar if location is not '/login' */}
+      {!isLoginPage && <Navbar />}
+      
+      <Routes>
+        <Route path='/about' element={<About />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
