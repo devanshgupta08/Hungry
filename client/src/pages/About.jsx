@@ -1,7 +1,7 @@
 // AboutPage.js
 
 import React from 'react';
-import '../App.css'
+import '../pages/About.css'
 const AboutPage = () => {
   return (
     <div className="about-page">
