@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import { About, Home, Login } from './pages';
+import { About, Home, Login,Register} from './pages';
 
 const App = () => {
   return (
@@ -16,7 +16,7 @@ const AppContent = () => {
   const location = useLocation();
 
   // Check if the current location is '/login'
-  const isLoginPage = location.pathname === '/login';
+  const isLoginPage = location.pathname === '/login' || location.pathname === "/register";
 
   return (
     <>
@@ -27,6 +27,7 @@ const AppContent = () => {
         <Route path='/about' element={<About />} />
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
       </Routes>
     </>
   );

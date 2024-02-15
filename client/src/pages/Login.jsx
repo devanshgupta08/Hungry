@@ -1,137 +1,134 @@
-import React, { useState } from 'react';
-import {Box, Typography, TextField, Button, Link, Grid} from '@mui/material';
-import axios from 'axios';
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Paper from '@mui/material/Paper';
+import axios from "axios"
 
-const login = () => {
-
-  const [isRegister, setIsRegister] = useState(false);
-
-  const [inputs, setInputs] = useState({
-    fullName:  "",
-    email: "",
-    mobileNo: "",
-    password: "",
-    confirmPassword: "",
-  });
-
-  const handleChange = (e) => {
-    setInputs((prevState) => ({
-      ...prevState,
-      [e.target.name] : e.target.value,
-    }));
-  };
-
-  const handleSubmit = async() => {
-
-    if(inputs.password !== inputs.confirmPassword){
-      alert('Passwords do not match. Please try again.');
-      return;
-    }
-
-    const loginFormData = new FormData();
-    loginFormData.append("fullName", inputs.fullName)
-    loginFormData.append("email", inputs.email)
-    loginFormData.append("mobileNo", inputs.mobileNo)
-    loginFormData.append("password", inputs.password)
-
-    try{
-      const response = await axios ({
-        method : "post",
-        url : "/api/Login",
-        data : loginFormData,
-        headers: {"Content-Type": "multipart/form-data" }, 
-      });
-    } catch(error) {
-      console.log(error);
-    }
-  }
-
-  const resetState = () => {
-    setIsRegister(!isRegister);
-    setInputs({fullName: "", email: "", mobileNo: "", password: "", confirmPassword: ""});
-  }
-
+function Copyright(props) {
   return (
-    <div>
-      <form onSubmit = {handleSubmit}>
-        <Box display = "flex" 
-        flexDirection = {"column"} 
-        maxWidth={600} 
-        alignItems="center" 
-        justifyContent={"center"}
-        margin="auto"
-        marginTop={5}
-        padding={3}
-        borderRadius={5}
-        boxShadow={"5px 5px 10px #ccc"}
-        sx={{":hover; " : {
-          boxShadow : "10px 10px 20px #ccc",
-        },
-      }}
-        >
-          <Typography sx = {{marginTop: 3, borderRadius: 1.5,}} variant="h2" padding={3} textAlign="center">
-            {isRegister ? "Register" : "Login"}
-          </Typography>
-          
-      
-          {isRegister && 
-          (<div style={{ width: "90%", padding: "5px" }}> <TextField fullWidth onChange={handleChange} value={inputs.fullName} name="fullName" margin="normal" type={'text'} variant="outlined" placeholder="Full Name*" required sx={{"& .MuiOutlinedInput-root": {
-          borderColor: "black", "&:hover fieldset": {borderColor: "green", }, },}}></TextField> </div>)}
-          
-          
-          <div style={{ width: "90%", padding: "5px" }}>
-          <TextField
-          fullWidth
-          onChange={handleChange} 
-          value={inputs.email} 
-          name="email" 
-          margin="normal" 
-          type={'email'} 
-          variant="outlined" 
-          placeholder="Email Address*" 
-          required
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
+
+// TODO remove, this demo shouldn't need to reset the theme.
+
+const defaultTheme = createTheme();
+
+export default function SignIn() {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const obj = {
+      email: data.get("email"),
+      password: data.get("password")
+    };
+
+    try {
+      const response = await axios.post('/api/users/login', obj);
+      console.log('Response:', response.data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+  return (
+    <Paper
+            sx={{
+              backgroundColor: "white",
+              boxShadow: "none",
+            }}
+          >
+    <ThemeProvider theme={defaultTheme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
           sx={{
-          "& .MuiOutlinedInput-root": {
-          borderColor: "black", "&:hover fieldset": {borderColor: "green", }, },}}>
-          </TextField>
-          </div>
-
-          {isRegister && (<div style={{ width: "90%", padding: "5px" }}><TextField fullWidth onChange={handleChange} value={inputs.mobileNo} name="mobileNo" margin="normal" type={'tel'} variant="outlined" placeholder="Mobile Number*" required sx={{"& .MuiOutlinedInput-root": {
-          borderColor: "black", "&:hover fieldset": {borderColor: "green", }, },}}></TextField></div>)}
-          
-          <div style={{ width: "90%", padding: "5px" }}>
-          <TextField fullWidth onChange={handleChange} value={inputs.password} name="password" margin="normal" type={'password'} variant="outlined" placeholder="Password*" required sx={{"& .MuiOutlinedInput-root": {
-          borderColor: "black", "&:hover fieldset": {borderColor: "green", }, },}}></TextField>
-          </div>
-          
-          {isRegister && (<div style={{ width: "90%", padding: "5px" }}><TextField fullWidth onChange={handleChange} 
-          value={inputs.confirmPassword} name="confirmPassword" margin="normal" type={'password'} variant="outlined" placeholder="Confirm Password*" required sx={{"& .MuiOutlinedInput-root": {
-          borderColor: "black", "&:hover fieldset": {borderColor: "green", }, },}}></TextField></div>)}
-
-          <div style={{ width: "90%", padding: "5px" }}>
-          <Button type="submit" fullWidth
-          sx = {{marginTop: 3, borderRadius: 1.5}} 
-          variant = "contained" 
-          color = "success" >
-            {isRegister ? "Register" : "Login"}
-            </Button> </div>
-          
-          {/* <Button onClick={resetState}
-           sx = {{marginTop: 3, borderRadius: 1.5,}} >
-            {isRegister ? "Already a member? Login Here" : "New member? Register Here"}
-            </Button> */}
-
-           <Grid container justifyContent="center">
-              <Grid item onClick={resetState} sx = {{marginTop: 3, color: "blue", cursor: "pointer", "&:hover": {
-            textDecoration: "underline",
-          },}}>
-                {isRegister ? "Already have an account? Log In" : "Don't have an account? Register here"}
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            bgcolor: "transparent",
+            "& .MuiPaper-root": {
+              backgroundColor: "red",
+              boxShadow: "none", // Remove any box shadow
+            },
+          }}
+        >
+           
+          <Avatar sx={{ m: 1, bgcolor: "green" }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign In
+            </Button>
+            <Grid container justifyContent="center">
+              <Grid item>
+                <Link href="/register" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
               </Grid>
             </Grid>
+          </Box>
         </Box>
-      </form>
-    </div>
+        <Copyright sx={{ mt: 8, mb: 4 }} />
+      </Container>
+    </ThemeProvider>
+  </Paper>
   );
-};
-
-export default login;
+}

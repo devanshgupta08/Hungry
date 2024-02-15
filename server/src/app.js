@@ -9,9 +9,16 @@ app.use(cors({
     credentials: true
 }))
 
-app.use(express.json())
+app.use(express.json())  //limit can be added ... .json(limit: "16kb")
 app.use(express.urlencoded({extended: true}))
 app.use(express.static("public"));
 app.use(cookieParser());
+
+
+//routes
+import userRouter from './routes/user.routes.js'
+import { home } from "./controllers/user.controller.js";
+// app.route("/").get(home)
+app.use("/api/users",userRouter)
 
 export { app }
