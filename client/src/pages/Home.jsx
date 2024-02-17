@@ -31,8 +31,8 @@ const Home = () => {
   
   return (
     <div style={{backgroundColor: '#FFF6E9'}}>
-    <h1>{isLoggedIn.toString()}</h1>
-    <p>{JSON.stringify(user)}</p>
+    {/* <h1>{isLoggedIn.toString()}</h1> */}
+    {/* <p>{JSON.stringify(user)}</p> */}
       <Hero />
       <Whatwedo />
       <Services />

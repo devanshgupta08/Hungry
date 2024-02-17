@@ -7,7 +7,8 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const AboutPage = () => {
   return (
-    <div className="m-auto w-2/3 h-auto">
+    <div style={{backgroundColor: '#FFF6E9'}}>
+    <div className="m-auto w-2/3 h-auto" >
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-center text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-black">
           Hunger
@@ -141,7 +142,8 @@ const AboutPage = () => {
         </section>
       </div>
     </div>
+    </div>
   );
 };
 
-export default AboutPage;
+export default AboutPage;

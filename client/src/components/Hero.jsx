@@ -15,7 +15,7 @@ const Hero = () => {
             on a mission to create a seamless bridge between abundance and need.
             <br />
             Let's bridge plates, break chains, and nourish lives together with
-            ZeroWasteFeast.
+            Bin2Bite.
           </p>
         </div>
 

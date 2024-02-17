@@ -80,7 +80,8 @@ function Navbar() {
     <AppBar position="static" sx={{ backgroundColor: "#40A2E3" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
+          <img src="../../../src/assets/new_logo2.jpg" alt="" className="h-10 w-10 rounded-full m-3"/>
           <Typography
             className="red"
             variant="h6"

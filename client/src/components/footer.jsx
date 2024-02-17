@@ -8,8 +8,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Column 1 */}
           <div className="flex flex-col space-y-4">
-            <AdbRoundedIcon />
-            <h1 className="text-white text-xl font-bold ">Hunger</h1>
+          <img src="../../../src/assets/new_logo2.jpg" alt="" className="h-10 w-10 rounded-full m-3"/>
+            <h1 className="text-white text-xl font-bold ">Bin2Bite</h1>
           </div>
           {/* Column 2 */}
           <div className="flex flex-col space-y-4">
@@ -50,12 +50,12 @@ const Footer = () => {
               <br />
               Phone: 123-456-7890
               <br />
-              Email: hunger@gmail.com
+              Email: bin2bite@gmail.com
             </p>
           </div>
         </div>
         <div className="border-t border-gray-600 mt-8 pt-6 flex flex-col items-center">
-          <p className="text-white">&copy; 2024 Hunger. All rights reserved.</p>
+          <p className="text-white">&copy; 2024 Bin2Bite. All rights reserved.</p>
           <div className="flex space-x-4 mt-4">
             <a
               href="#"
@@ -82,4 +82,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Footer;

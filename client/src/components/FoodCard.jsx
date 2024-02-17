@@ -49,4 +49,4 @@ const FoodCard = ({ card_detail }) => {
   );
 };
 
-export default FoodCard;
+export default FoodCard;
