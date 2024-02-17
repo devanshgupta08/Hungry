@@ -3,8 +3,8 @@ import AdbRoundedIcon from "@mui/icons-material/AdbRounded";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-12">
-      <div className="container mx-auto px-4">
+    <footer className= " text-white py-12"  style={{backgroundColor: '#40A2E3'}}>
+      <div className="container mx-auto px-4"  >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Column 1 */}
           <div className="flex flex-col space-y-4">

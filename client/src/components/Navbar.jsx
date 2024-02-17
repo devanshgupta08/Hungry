@@ -77,7 +77,7 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#000000" }}>
+    <AppBar position="static" sx={{ backgroundColor: "#40A2E3" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
@@ -97,7 +97,7 @@ function Navbar() {
               textDecoration: "none",
             }}
           >
-            ZeroWasteFeast
+            Bin2Bite
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton

@@ -49,7 +49,7 @@ const RfoodForm = () => {
 
           <div className="flex justify-between">
             <button type="button" className='w-1/2 ml-2 mr-4 text-lg rounded-full bg-white text-emerald-800 hover:bg-red-600 hover:text-white py-3 transition-colors duration-300'><Link to='/'>Cancel</Link></button>
-            <button type="submit" className='w-1/2 mr-2 text-lg rounded-full bg-white text-emerald-800 hover:bg-emerald-600 hover:text-white py-3 transition-colors duration-300'>Request Food</button>
+            <button type="button" className='w-1/2 mr-2 text-lg rounded-full bg-white text-emerald-800 hover:bg-emerald-600 hover:text-white py-3 transition-colors duration-300'><Link to='/GetFood'>Request Food</Link></button>
           </div>
         </form>
 

@@ -5,6 +5,7 @@ import Footer from './components/footer';
 import DFood from './pages/DFood';
 import RFood from './pages/RFood';
 import Logout from './pages/Logout';
+import GetFood from './pages/GetFood';
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const AppContent = () => {
         <Route path='/DFood' element={<DFood />} />
         <Route path='/RFood' element={<RFood />} />
         <Route path='/logout' element={<Logout />} />
+        <Route path='/GetFood' element={<GetFood />} />
       </Routes>
       <Footer/>
     </>
