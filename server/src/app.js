@@ -17,8 +17,10 @@ app.use(cookieParser());
 
 //routes
 import userRouter from './routes/user.routes.js'
-import { home } from "./controllers/user.controller.js";
+import foodRouter from './routes/food.routes.js'
+// import { home } from "./controllers/user.controller.js";
 // app.route("/").get(home)
 app.use("/api/users",userRouter)
+app.use("/api/food",foodRouter)
 
 export { app }
