@@ -1,6 +1,6 @@
 const Hero = () => {
   return (
-    <div className="relative bg-cover bg-center h-screen container  flex justify-center items-center">
+    <div className="relative bg-cover bg-center h-screen container  flex justify-center items-center" style={{background:''}}>
       <div className="flex flex-wrap-reverse justify-center md:justify-between  w-full ">
         {/* First column */}
         <div className="w-full md:w-1/2 p-4 ">

@@ -29,7 +29,7 @@ const foodSchema = new Schema(
         photo: {
             type: String,
         },
-        descriptions: {
+        description: {
             type: String,
             trim: true
         },

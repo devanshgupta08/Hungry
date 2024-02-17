@@ -26,7 +26,7 @@ const AppContent = () => {
   return (
     <>
       {/* Render Navbar if location is not '/login' */}
-      {<Navbar />}
+      {!isLoginPage && <Navbar />}
       
       <Routes>
         <Route path='/about' element={<About />} />

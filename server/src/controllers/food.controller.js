@@ -33,7 +33,7 @@ const home = asyncHandler(async (req, res) => {
 
 const postFood = asyncHandler(async(req,res)=>{
     //get user details
-    const {address,pincode,state,city,organization,descriptions} = req.body
+    const {address,pincode,state,city,organization,description} = req.body
     //validation - not empty
     if([address,pincode,state,city].some((field)=>{
         field?.trim() ===""
@@ -45,6 +45,7 @@ const postFood = asyncHandler(async(req,res)=>{
     
     //check for images
     let photoLocalPath ="";
+    // console.log(req.files);
     if(req.files && Array.isArray(req.files.photo) && req.files.photo.length>0)
     {
         photoLocalPath = req.files.photo[0].path
@@ -52,6 +53,7 @@ const postFood = asyncHandler(async(req,res)=>{
     console.log(photoLocalPath);
     //upload to cloudinary,avatar
     const photo = await cloudinaryUpload(photoLocalPath)
+    // const photo = "";
     const owner = req.user;
     //create user obj 
     const food = await Food.create({
@@ -62,7 +64,7 @@ const postFood = asyncHandler(async(req,res)=>{
         organization,
         photo:photo.url,
         owner: owner, // Assign the complete user object
-        descriptions
+        description
     })
     //populate owner field to get the full user object
     
