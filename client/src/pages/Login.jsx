@@ -80,46 +80,37 @@ export default function SignIn() {
   }
   return (
     <Paper
-            sx={{
-              //Devesh Issue with Bg image Navbar area is diaplaying white check it 
-              // backgroundImage: `url("https://wallpaper-house.com/data/out/10/wallpaper2you_373651.jpg")`,
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
-              backgroundColor: "none", //white to none
-              boxShadow: "none",
-              height: "100vh"
-            }}
-          >
+        sx={{
+          backgroundImage: `url("https://wallpaper-house.com/data/out/10/wallpaper2you_373651.jpg")`,
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          backgroundColor: "none", //white to none
+          boxShadow: "none",
+          height: "92vh"
+        }}
+      >
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            bgcolor: "transparent",
-            "& .MuiPaper-root": {
-              backgroundColor: "transparent",
-              boxShadow: "none", // Remove any box shadow
-            },
-          }}
-        >
-           
-          {/* <Avatar sx={{ m: 1, bgcolor: "green" }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography> */}
+            sx={{
+              marginTop: 0,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              bgcolor: "transparent",
+              "& .MuiPaper-root": {
+                backgroundColor: "transparent", 
+                boxShadow: "none",
+              },
+            }}
+          >
           <Box
             component="form"
             onSubmit={handleSubmit}
             sx={{mt: "17vh" }}
           >
-
           <Grid container justifyContent="center">
               <Grid item>
                 <Avatar sx={{ml:2.3,mb:1, bgcolor: "green" }}>
@@ -140,9 +131,12 @@ export default function SignIn() {
               autoComplete="email"
               autoFocus
               sx={{
-                '& .MuiOutlinedInput-root fieldset': {
-                borderColor: '#000',
-                },
+                // '& .MuiOutlinedInput-root fieldset': {
+                // borderColor: '#000',
+                // },
+                "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#000",
+                  },
                 "& .MuiOutlinedInput-root": {
                 '&.Mui-focused': {
                   
@@ -173,6 +167,33 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              sx={{
+                // '& .MuiOutlinedInput-root fieldset': {
+                // borderColor: '#000',
+                // },
+                "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#000",
+                  },
+                "& .MuiOutlinedInput-root": {
+                '&.Mui-focused': {
+                  
+                  bgcolor: "#FFFFFF",
+                  borderWidth: "3px",
+                  
+                },   },
+                "&:hover": {
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#0892d0",
+                    borderWidth: "3px",
+                  },
+                },
+                "& .MuiInputLabel-outlined": {
+                  "&.Mui-focused": {
+                    color: "#0892d0",
+                    fontWeigth:"bold",
+                  },
+                },
+              }}
             />
             <Button
               type="submit"
