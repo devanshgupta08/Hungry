@@ -10,4 +10,4 @@ router.route("/postfood").post(verifyJWT,upload.fields([{
     maxCount: 1
 }]),postFood)
 router.route("/getfood").post(verifyJWT,getFood)
-export default router
+export default router 

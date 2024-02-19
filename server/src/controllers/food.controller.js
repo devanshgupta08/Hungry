@@ -33,15 +33,15 @@ const home = asyncHandler(async (req, res) => {
 
 const postFood = asyncHandler(async(req,res)=>{
     //get user details
-    const {address,pincode,state,city,organization,description} = req.body
+    const {address,pincode,state,city,organization,description,latitude,longitude} = req.body
+
     //validation - not empty
-    if([address,pincode,state,city].some((field)=>{
+    if([address,pincode,state,city,latitude,longitude].some((field)=>{
         field?.trim() ===""
     }))
     {
-        throw new ApiError(400,"Some fields are Empty")
+        throw new ApiError(400,"Some fields are Empty");
     }
-    //check if user already exits
     
     //check for images
     let photoLocalPath ="";
@@ -51,10 +51,12 @@ const postFood = asyncHandler(async(req,res)=>{
         photoLocalPath = req.files.photo[0].path
     }
     console.log(photoLocalPath);
+
     //upload to cloudinary,avatar
     const photo = await cloudinaryUpload(photoLocalPath)
     // const photo = "";
     const owner = req.user;
+
     //create user obj 
     const food = await Food.create({
         address,
@@ -64,8 +66,13 @@ const postFood = asyncHandler(async(req,res)=>{
         organization,
         photo:photo.url,
         owner: owner, // Assign the complete user object
-        description
+        description,
+        location:{
+            type:"Point",
+            coordinates:[parseFloat(longitude),parseFloat(latitude)]
+        }
     })
+
     //populate owner field to get the full user object
     
     //remove pwd and refresh token 
@@ -77,15 +84,40 @@ const postFood = asyncHandler(async(req,res)=>{
     // return res
     return res.status(201).json(new ApiResponse(200,createdFood, "Food added Successfully"));
 });
+
+
 const getFood = asyncHandler(async(req,res)=>{
+
+    const {address,pincode,state,city,organization,description,latitude,longitude,setDistance} = req.body
+
+    //validation - not empty
+    // if([address,pincode,state,city,latitude,longitude].some((field)=>{
+    //     field?.trim() ===""
+    // }))
+    // {
+    //     throw new ApiError(400,"Some fields are Empty");
+    // }
     
-    const allFoods = await Food.find({});
-    if(!allFoods)
-    {
-        return new ApiError(500,"Error Fetching Foods")
-    }
-    // return res
-    return res.status(200).json(new ApiResponse(200,allFoods, "Food added Successfully"));
+    const store_data = await Food.aggregate([
+        {
+                $geoNear:{
+                    near:{type:"Point",coordinates:[parseFloat(longitude),parseFloat(latitude)]},
+                    key:"location",
+                    maxDistance: parseFloat(setDistance) * 1000, 
+                    distanceField:"dist.calculated",
+                    spherical:true
+                }
+        }   
+    ]);
+
+    return res.status(200).json(new ApiResponse(200,store_data, "All Foods fetched Successfully"));
+    // const allFoods = await Food.find({});
+    // if(!allFoods)
+    // {
+    //     return new ApiError(500,"Error Fetching Foods")
+    // }
+    // // return res
+    // return res.status(200).json(new ApiResponse(200,allFoods, "All Foods fetched Successfully"));
 });
 
 export {

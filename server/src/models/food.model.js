@@ -36,11 +36,16 @@ const foodSchema = new Schema(
         owner: {
             type: Schema.Types.Mixed,
             required: true
+        },
+        location:{
+            type:{type:String,required:true},
+            coordinates:[]
         }
     },
     {
       timestamps: true
     }
   );
+foodSchema.index({location:"2dsphere"})
 
 export const Food = mongoose.model("Food", foodSchema);
