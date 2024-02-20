@@ -35,8 +35,6 @@ const postFood = asyncHandler(async(req,res)=>{
     //get user details
     const {address,pincode,state,city,organization,description,latitude,longitude} = req.body
 
-    const {address,pincode,state,city,organization,description,latitude,longitude} = req.body
-
     //validation - not empty
     if([address,pincode,state,city,latitude,longitude].some((field)=>{
         field?.trim() ===""
@@ -47,14 +45,14 @@ const postFood = asyncHandler(async(req,res)=>{
     
     //check for images
     let photoLocalPath ="";
-    console.log(req.files);
+    // console.log(req.files);
     if(req.files && Array.isArray(req.files.photo) && req.files.photo.length>0)
     {
         photoLocalPath = req.files.photo[0].path
     }
-    console.log("local path ",photoLocalPath);
+    console.log(photoLocalPath);
 
-    // upload to cloudinary,avatar
+    //upload to cloudinary,avatar
     const photo = await cloudinaryUpload(photoLocalPath)
     // const photo = "";
     const owner = req.user;
@@ -67,7 +65,6 @@ const postFood = asyncHandler(async(req,res)=>{
         city,
         organization,
         photo:photo.url,
-        // photo:photo,
         owner: owner, // Assign the complete user object
         description,
         location:{
@@ -91,26 +88,26 @@ const postFood = asyncHandler(async(req,res)=>{
 
 const getFood = asyncHandler(async(req,res)=>{
 
-    const {address,pincode,state,city,organization,description,latitude,longitude} = req.body
+    const {address,pincode,state,city,organization,description,latitude,longitude,setDistance} = req.body
 
     //validation - not empty
-    if([address,pincode,state,city,latitude,longitude].some((field)=>{
-        field?.trim() ===""
-    }))
-    {
-        throw new ApiError(400,"Some fields are Empty");
-    }
+    // if([address,pincode,state,city,latitude,longitude].some((field)=>{
+    //     field?.trim() ===""
+    // }))
+    // {
+    //     throw new ApiError(400,"Some fields are Empty");
+    // }
     
     const store_data = await Food.aggregate([
         {
                 $geoNear:{
                     near:{type:"Point",coordinates:[parseFloat(longitude),parseFloat(latitude)]},
                     key:"location",
-                    maxDistance:parseFloat(1000)*1609,
+                    maxDistance: parseFloat(setDistance) * 1000, 
                     distanceField:"dist.calculated",
                     spherical:true
                 }
-        }
+        }   
     ]);
 
     return res.status(200).json(new ApiResponse(200,store_data, "All Foods fetched Successfully"));
