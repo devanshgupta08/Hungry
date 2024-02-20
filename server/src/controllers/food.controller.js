@@ -35,6 +35,8 @@ const postFood = asyncHandler(async(req,res)=>{
     //get user details
     const {address,pincode,state,city,organization,description,latitude,longitude} = req.body
 
+    const {address,pincode,state,city,organization,description,latitude,longitude} = req.body
+
     //validation - not empty
     if([address,pincode,state,city,latitude,longitude].some((field)=>{
         field?.trim() ===""
