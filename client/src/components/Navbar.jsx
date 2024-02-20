@@ -44,7 +44,7 @@ function Navbar() {
       .catch((error) => {
         console.error("Error:", error);
       });
-  }); //scope of error
+  },[]); //scope of error
 
   const handleLogout = () => {
     setAnchorElNav(null);

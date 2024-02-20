@@ -6,6 +6,7 @@ import DFood from './pages/DFood';
 import RFood from './pages/RFood';
 import Logout from './pages/Logout';
 import GetFood from './pages/GetFood';
+import Latlong from './pages/Latlong';
 
 const App = () => {
   return (
@@ -34,7 +35,7 @@ const AppContent = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/DFood' element={<DFood />} />
-        <Route path='/RFood' element={<RFood />} />
+        <Route path='/GetFood' element={<GetFood/>} />
         <Route path='/logout' element={<Logout />} />
         <Route path='/GetFood' element={<GetFood />} />
       </Routes>

@@ -48,7 +48,7 @@ export default function SignIn() {
     .then(response => {
       if(response.data.data.verifiedObj.verified)
       { 
-        console.log(response.data.data.user);
+        // console.log(response.data.data.user);
         setIsLoggedIn(true);
         setUser(response.data.data.user);
       }

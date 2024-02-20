@@ -13,7 +13,7 @@ const Services = () => {
       text: "Access nutritious meals through our platform, connecting you with donated food. Whether facing food insecurity or seeking assistance, we're here to support you in times of need.",
       heading: "Take Food",
       btn: "Get Food",
-      link: "/RFood"
+      link: "/GetFood"
     },
   ];
   return (

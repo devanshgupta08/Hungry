@@ -11,7 +11,7 @@ const AboutPage = () => {
     <div className="m-auto w-2/3 h-auto" >
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-center text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-black">
-          Hunger
+          Bin2Bite
         </h1>
 
         <h1 className=" text-green-700 text-3xl font-bold text-center mb-8">
@@ -25,7 +25,7 @@ const AboutPage = () => {
               id="panel1-header"
             >
               <Typography sx={{ fontWeight: 800, color: "black" }}>
-                What is ZeroWasteFeast
+                What is Bin2Bite
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
