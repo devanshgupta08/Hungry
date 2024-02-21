@@ -9,6 +9,7 @@ import GetFood from './pages/GetFood';
 import Latlong from './pages/Latlong';
 import Chatbot from './components/Chatbot.jsx';
 import "./App.css"
+import MapComponent from './components/Map/Maps';
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const AppContent = () => {
       <Routes>
         <Route path='/about' element={<About />} />
         <Route path='/' element={<Home />} />
+        <Route path='/maps' element={<MapComponent />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/DFood' element={<DFood />} />
