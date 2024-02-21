@@ -22,25 +22,25 @@ const FoodCard = ({ card_detail }) => {
       <Card className="max-w-sm rounded-xl shadow-lg">
         <img
           className="object-cover object-bottom h-60 w-full rounded-t-xl"
-          src={card_detail.url}
+          src={card_detail.photo}
           alt="Meaningful alt text for an image that is not purely decorative"
         />
         <div className="pb-6">
           <h5 className="mt-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {card_detail.heading}
+          {card_detail.title || "Title Here"}
           </h5>
           <div className="container">
             <p className="font-normal text-gray-700 dark:text-gray-400 text-left">
-              Description:- {card_detail.text}
+              Description:- {card_detail.description}
             </p>
             <p className="font-normal text-gray-700 dark:text-gray-400 text-left">
               Address:- {card_detail.address}
             </p>
             <p className="font-normal text-gray-700 dark:text-gray-400 text-left">
-              Pincode:- {card_detail.Pincode}
+              Pincode:- {card_detail.pincode}
             </p>
             <p className="font-normal text-gray-700 dark:text-gray-400 text-left">
-              Contact No:- {card_detail.contact_no}
+              Contact No:- {card_detail.owner.mobileNo}
             </p>
           </div>
         </div>

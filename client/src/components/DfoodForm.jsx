@@ -10,6 +10,7 @@ const DfoodForm = () => {
   const [organization,setOrganization]=useState('');
   const [photo,setPhoto]=useState();
   const [description,setDescription]=useState('');
+  const [title,setTitle]=useState('Title Here');
 
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
@@ -79,6 +80,7 @@ const DfoodForm = () => {
       formDataToSend.append('photo', photo);
       formDataToSend.append('latitude', latitude);
       formDataToSend.append('longitude', longitude);
+      formDataToSend.append('title', title);
 
       const response = await axios.post('/api/food/postfood', formDataToSend, {
         headers: {
@@ -148,6 +150,16 @@ const DfoodForm = () => {
               onChange={(e)=>{setOrganization(e.target.value)}}
               className='block w-full py-2.5 px-4 text-sm text-white bg-transparent border-0 border-b-2 border-gray-100 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus-text-white focus:border-blue-600 peer'
               placeholder="Organization (if applicable)"
+            />
+          </div>
+
+          <div className='relative my-4'>
+            <input
+              type="text"
+              name="title"
+              onChange={(e)=>{setTitle(e.target.value)}}
+              className='block w-full py-2.5 px-4 text-sm text-white bg-transparent border-0 border-b-2 border-gray-100 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus-text-white focus:border-blue-600 peer'
+              placeholder="title"
             />
           </div>
           

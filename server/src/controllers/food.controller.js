@@ -33,7 +33,7 @@ const home = asyncHandler(async (req, res) => {
 
 const postFood = asyncHandler(async(req,res)=>{
     //get user details
-    const {address,pincode,state,city,organization,description,latitude,longitude} = req.body
+    const {address,pincode,state,city,organization,description,latitude,longitude,title} = req.body
 
     //validation - not empty
     if([address,pincode,state,city,latitude,longitude].some((field)=>{
@@ -67,6 +67,7 @@ const postFood = asyncHandler(async(req,res)=>{
         photo:photo.url,
         owner: owner, // Assign the complete user object
         description,
+        title,
         location:{
             type:"Point",
             coordinates:[parseFloat(longitude),parseFloat(latitude)]

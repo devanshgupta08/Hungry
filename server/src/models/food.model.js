@@ -33,6 +33,11 @@ const foodSchema = new Schema(
             type: String,
             trim: true
         },
+        title: {
+            type: String,
+            trim: true,
+            required: true
+        },
         owner: {
             type: Schema.Types.Mixed,
             required: true
