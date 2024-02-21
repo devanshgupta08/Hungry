@@ -7,6 +7,8 @@ import RFood from './pages/RFood';
 import Logout from './pages/Logout';
 import GetFood from './pages/GetFood';
 import Latlong from './pages/Latlong';
+import Chatbot from './components/Chatbot.jsx';
+import "./App.css"
 
 const App = () => {
   return (
@@ -39,6 +41,7 @@ const AppContent = () => {
         <Route path='/logout' element={<Logout />} />
         <Route path='/GetFood' element={<GetFood />} />
       </Routes>
+      {/* <Chatbot/> */}
       <Footer/>
     </>
   );

@@ -6,7 +6,7 @@ const GetFood = () => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [error, setError] = useState(null);
-  const [radius, setRadius] = useState(20);
+  const [radius, setRadius] = useState(20000);
   const[data,setData]=useState([]);
 
   useEffect(() => {
