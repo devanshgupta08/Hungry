@@ -1,6 +1,7 @@
 import FoodCard from "@/components/Foodcard";
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
+import MapComponent from "@/components/Map/Maps";
 
 const GetFood = () => {
   const [latitude, setLatitude] = useState(null);
@@ -37,7 +38,7 @@ const GetFood = () => {
           withCredentials: true,
         });
         setData(response.data.data);
-        console.log(response.data);
+        // console.log(response.data.data);
       }
     } catch (error) {
       console.error('Error:', error);
@@ -49,6 +50,7 @@ const GetFood = () => {
     setSliderValue(value); // Update the slider value state
     setRadius(value); // Update the radius state
   };
+  
 
   return (
     <div>
@@ -76,10 +78,11 @@ const GetFood = () => {
             value={sliderValue}
             onChange={handleSliderChange}
             className="slider"
-          />
+            />
           <span className="  font-semibold ml-2">{sliderValue} km</span>
         </div>
         
+            <MapComponent data={data}/>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6 pb-14">
           {data.map((item, index) => (
             <FoodCard card_detail={item} key={index} />
