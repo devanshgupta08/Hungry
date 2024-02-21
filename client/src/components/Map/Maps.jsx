@@ -4,7 +4,7 @@ import pointer from "./restaurant.png"
 
 const MapComponent = (props) => {
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey:"AIzaSyDkTuCGpx-NsXGcyqHXHOriF21qcCF4fX0",
+    googleMapsApiKey:import.meta.env.VITE_MAP_API_KEY,
   });
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
