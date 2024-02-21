@@ -7,6 +7,7 @@ import RFood from './pages/RFood';
 import Logout from './pages/Logout';
 import GetFood from './pages/GetFood';
 import Latlong from './pages/Latlong';
+import MapComponent from './components/Map/Maps';
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const AppContent = () => {
       <Routes>
         <Route path='/about' element={<About />} />
         <Route path='/' element={<Home />} />
+        <Route path='/maps' element={<MapComponent />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/DFood' element={<DFood />} />
