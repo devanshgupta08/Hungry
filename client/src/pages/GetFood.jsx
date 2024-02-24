@@ -1,4 +1,4 @@
-import FoodCard from "@/components/Foodcard";
+import FoodCard from "@/components/Foodcard.jsx";
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import MapComponent from "@/components/Map/Maps";
