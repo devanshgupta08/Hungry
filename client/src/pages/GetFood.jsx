@@ -1,7 +1,7 @@
-import FoodCard from "@/components/Foodcard.jsx";
+import FoodCard from "./../components/Foodcard.jsx";
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
-import MapComponent from "@/components/Map/Maps";
+import MapComponent from "./../components/Map/Maps";
 import {useNavigate} from "react-router-dom";
 import { toast } from 'react-toastify';
 
