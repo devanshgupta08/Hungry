@@ -116,7 +116,7 @@ export default function SignIn() {
                 <Avatar sx={{ml:2.3,mb:1, bgcolor: "green" }}>
                   <LockOutlinedIcon />
                 </Avatar>
-                <Typography component="h1" variant="h5" sx={{textAlign:"center"}}>
+                <Typography component="h1" variant="h5" sx={{textAlign:"center" , fontWeight: 'bold'}} >
                   Sign In
                 </Typography>
               </Grid>
