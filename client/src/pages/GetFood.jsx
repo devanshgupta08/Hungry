@@ -2,6 +2,9 @@ import FoodCard from "@/components/Foodcard";
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import MapComponent from "@/components/Map/Maps";
+import {useNavigate} from "react-router-dom";
+import { toast } from 'react-toastify';
+
 
 const GetFood = () => {
   const [latitude, setLatitude] = useState(null);
@@ -10,6 +13,28 @@ const GetFood = () => {
   const [radius, setRadius] = useState(20);
   const [data, setData] = useState([]);
   const [sliderValue, setSliderValue] = useState(20); // New state for slider value
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+  useEffect(() => {
+    axios.post('/api/users/isloggedin',{},{withCredentials: true})
+    .then(response => {
+      if(response.data.data.verifiedObj.verified)
+      { 
+        console.log(response.data.data.user);
+        setIsLoggedIn(true);
+        setUser(response.data.data.user);
+      }
+      else{
+        toast.error("Please Login to continue");
+        navigate("/login");
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  },[])
 
   useEffect(() => {
     if (navigator.geolocation) {

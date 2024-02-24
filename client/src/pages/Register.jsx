@@ -16,6 +16,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import HowToRegIcon from "@mui/icons-material/HowToReg"; //icon in submit
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 function Copyright(props) {
   return (
@@ -52,7 +53,7 @@ export default function SignUp() {
           setIsLoggedIn(true);
           setUser(response.data.data.user);
         } else {
-          console.log("Not logged In");
+          // console.log("Not logged In");
         }
       })
       .catch((error) => {
@@ -76,17 +77,16 @@ export default function SignUp() {
         withCredentials: true,
       });
       console.log("Response:", response.data);
+      toast.success("Registration Successfull ,Login to continue");
       navigate("/login");
     } catch (error) {
       console.error("Error:", error);
       if (error.response && error.response.status === 409) {
         // Status code 409: Conflict
-        alert(
-          "A user with the provided email already exists. Please use a different email."
-        );
+        toast.error("A user with the provided email already exists. Please use a different email.");
       } else {
         // For other status codes or unknown errors
-        alert("An error occurred. Please try again later.");
+        toast.error("An error occurred. Please try again later.");
       }
     }
   };

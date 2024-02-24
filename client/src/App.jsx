@@ -13,6 +13,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MapComponent from './components/Map/Maps';
 import chatBotImg from './assets/chatbot.png'
 import React,{useState} from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
@@ -32,6 +34,19 @@ const AppContent = () => {
   const [chatBot, setChatBot] = useState(false);
   return (
     <>
+      <ToastContainer
+      position="top-center"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      transition: Bounce
+      />
       {!isLoginPage && <Navbar />}
       { chatBot && <Chatbot chatBot={chatBot} setChatBot={setChatBot}/>}
       {!chatBot &&<Tooltip title="AI ChatBot" placement="left-start">

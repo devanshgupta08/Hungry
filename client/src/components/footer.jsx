@@ -23,19 +23,27 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-400 text-white">
+                <a href="/about" className="hover:text-gray-400 text-white">
                   {" "}
                   {/* Added text-white class */}
                   About
                 </a>
               </li>
               <li>
-                <a href="/#services" className="hover:text-gray-400 text-white">
+                <a href="/DFood" className="hover:text-gray-400 text-white">
                   {" "}
                   {/* Added text-white class */}
-                  Services
+                  Donate Food
                 </a>
               </li>
+              <li>
+                <a href="/GetFood" className="hover:text-gray-400 text-white">
+                  {" "}
+                  {/* Added text-white class */}
+                  Take Food
+                </a>
+              </li>
+              
             </ul>
           </div>
           {/* Column 3 */}
@@ -48,7 +56,7 @@ const Footer = () => {
               <br />
               Kota, Rajasthan, 325003
               <br />
-              Phone: 123-456-7890
+              Phone: +91-6263302232
               <br />
               Email: bin2bite@gmail.com
             </p>

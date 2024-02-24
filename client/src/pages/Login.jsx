@@ -16,6 +16,7 @@ import Paper from '@mui/material/Paper';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
 import LoginIcon from '@mui/icons-material/Login'; 
+import { toast } from 'react-toastify';
 
 function Copyright(props) {
   return (
@@ -72,10 +73,11 @@ export default function SignIn() {
     try {
       const response = await axios.post('/api/users/login', obj, { withCredentials: true });
       console.log(response);
+      toast.success("Logged In Successfully");
       navigate('/');
     } catch (error) {
       console.error('Error:', error.message);
-      alert("Invalid credentials");
+      toast.error("Invalid credentials");
     }    
   }
   return (

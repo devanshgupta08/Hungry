@@ -1,23 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Logout = () => {
   const navigate = useNavigate();
+  const [countdown, setCountdown] = useState(2);
 
   useEffect(() => {
-    // Simulate logout process
     const timeoutId = setTimeout(() => {
-      // Navigate back to "/"
-      navigate("/");
-    }, 3000); // 3000 milliseconds = 3 seconds
+      // Decrease countdown every second
+      if (countdown > 0) {
+        setCountdown(countdown - 1);
+      } else {
+        // Redirect to home page when countdown reaches 0
+        navigate("/");
+      }
+    }, 1000); // 1000 milliseconds = 1 second
 
     return () => clearTimeout(timeoutId); // Cleanup function
-  }, [navigate]);
+  }, [countdown, navigate]);
 
   return (
-    <div>
-      <h2>Logged out successfully!</h2>
-      <p>Redirecting you back to the home page...</p>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <h2 className="text-2xl font-bold mb-4">Logged out successfully!</h2>
+      <p className="mb-4">Redirecting you back to the home page in {countdown}...</p>
     </div>
   );
 };
