@@ -2,7 +2,8 @@ const Whatwedo = () => {
   return (
     <div className="container">
       <div className="container mt-14 h-screen ">
-        <h1 className=" text-4xl md:text-6xl mb-5 font-bold leading-normal text-center text-blue-900 font-serif">
+        <h1 className=" text-4xl md:text-6xl mb-5 font-bold leading-normal text-center text-blue-900 font-serif"
+        style={{ color: "#4285F4" }}>
           What We Do!
         </h1>
         <img
