@@ -1,20 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const MessageParser = ({ children, actions }) => {
-  const parse = (message) => {
-    // console.log(message);
-    actions.geminiAction(message);
+  const parse = async (message) => {
+    await actions.geminiAction(message);
   };
 
   return (
+    <>
     <div>
       {React.Children.map(children, (child) => {
         return React.cloneElement(child, {
           parse: parse,
-          actions: {},
+          actions: actions,
         });
       })}
     </div>
+    </>
   );
 };
 

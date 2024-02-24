@@ -9,7 +9,10 @@ import GetFood from './pages/GetFood';
 import Latlong from './pages/Latlong';
 import Chatbot from './components/Chatbot.jsx';
 import "./App.css"
+import Tooltip from '@mui/material/Tooltip';
 import MapComponent from './components/Map/Maps';
+import chatBotImg from './assets/chatbot.png'
+import React,{useState} from 'react'
 
 const App = () => {
   return (
@@ -26,12 +29,14 @@ const AppContent = () => {
 
   // Check if the current location is '/login'
   const isLoginPage = location.pathname === '/login' || location.pathname === "/register"|| location.pathname === "/logout";
-
+  const [chatBot, setChatBot] = useState(false);
   return (
     <>
-      {/* Render Navbar if location is not '/login' */}
       {!isLoginPage && <Navbar />}
-      
+      { chatBot && <Chatbot chatBot={chatBot} setChatBot={setChatBot}/>}
+      {!chatBot &&<Tooltip title="AI ChatBot" placement="left-start">
+      <img src={chatBotImg} onClick={()=>{setChatBot(true)}} className='chat-bot-btn' alt="Chat Bot"/>
+      </Tooltip>}
       <Routes>
         <Route path='/about' element={<About />} />
         <Route path='/' element={<Home />} />
@@ -43,7 +48,6 @@ const AppContent = () => {
         <Route path='/logout' element={<Logout />} />
         <Route path='/GetFood' element={<GetFood />} />
       </Routes>
-      {/* <Chatbot/> */}
       <Footer/>
     </>
   );

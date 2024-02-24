@@ -8,7 +8,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
         let message ="";
         try{
         const result = await model.generateContent(query);
-        const response = await result.response;
+        const response = result.response;
         const text = response.text();
         message = createChatBotMessage(text);
         }
