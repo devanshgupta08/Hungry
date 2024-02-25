@@ -20,6 +20,9 @@ import userRouter from './routes/user.routes.js'
 import foodRouter from './routes/food.routes.js'
 // import { home } from "./controllers/user.controller.js";
 // app.route("/").get(home)
+app.get("/", (req, res) => {
+    res.send("Home route is Working!");
+});
 app.use("/api/users",userRouter)
 app.use("/api/food",foodRouter)
 
