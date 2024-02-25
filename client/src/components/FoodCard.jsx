@@ -21,7 +21,7 @@ const FoodCard = ({ card_detail }) => {
     >
       <Card className="max-w-sm rounded-xl shadow-lg">
         <img
-          className="object-cover object-bottom h-60 w-full rounded-t-xl"
+          className="object-cover h-60 w-full rounded-t-xl"
           src={card_detail.photo}
           alt="Meaningful alt text for an image that is not purely decorative"
         />

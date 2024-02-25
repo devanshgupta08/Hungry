@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MapComponent from './components/Map/Maps';
 import chatBotImg from './assets/chatbot.png'
 import React,{useState} from 'react'
+import Services from "../../client/src/components/services.jsx";
 
 const App = () => {
   return (
@@ -47,6 +48,8 @@ const AppContent = () => {
         <Route path='/GetFood' element={<GetFood/>} />
         <Route path='/logout' element={<Logout />} />
         <Route path='/GetFood' element={<GetFood />} />
+        <Route path='/services' element={<Services />} />
+
       </Routes>
       <Footer/>
     </>

@@ -558,6 +558,80 @@ const DfoodForm = () => {
             },
           }}
         />
+        <TextField
+        name="lat"              
+        onChange={(e)=>{setLatitude(e.target.value)}}
+           value={latitude}
+           margin="normal"
+           required
+           fullWidth
+           label="Latitude"
+          //  autoFocus
+           sx={{
+            // '& .MuiOutlinedInput-root fieldset': {
+            // borderColor: '#FFF',
+            // },
+            "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#FFF",
+              },
+            "& .MuiOutlinedInput-root": {
+            '&.Mui-focused': {
+              
+              bgcolor: "#FFFFFF",
+              borderWidth: "3px",
+              
+            },   },
+            "&:hover": {
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#0892d0",
+                borderWidth: "3px",
+              },
+            },
+            "& .MuiInputLabel-outlined": {
+              "&.Mui-focused": {
+                color: "#0892d0",
+                fontWeigth:"bold",
+              },
+            },
+          }}
+        />
+        <TextField
+        value={longitude}
+        name="long"              
+        onChange={(e)=>{setLongitude(e.target.value)}}
+           margin="normal"
+           required
+           fullWidth
+           label="Longitude"
+          //  autoFocus
+           sx={{
+            // '& .MuiOutlinedInput-root fieldset': {
+            // borderColor: '#FFF',
+            // },
+            "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#FFF",
+              },
+            "& .MuiOutlinedInput-root": {
+            '&.Mui-focused': {
+              
+              bgcolor: "#FFFFFF",
+              borderWidth: "3px",
+              
+            },   },
+            "&:hover": {
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#0892d0",
+                borderWidth: "3px",
+              },
+            },
+            "& .MuiInputLabel-outlined": {
+              "&.Mui-focused": {
+                color: "#0892d0",
+                fontWeigth:"bold",
+              },
+            },
+          }}
+        />
 
         <Button
           type="submit"

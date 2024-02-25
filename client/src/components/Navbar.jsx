@@ -44,7 +44,7 @@ function Navbar() {
       .catch((error) => {
         console.error("Error:", error);
       });
-  },[]); //scope of error
+  }, []); //scope of error
 
   const handleLogout = () => {
     setAnchorElNav(null);
@@ -186,7 +186,6 @@ function Navbar() {
                   </Link>
                 </MenuItem>
               )}
-              
 
               {isLoggedIn && (<MenuItem onClick={handleLogout}>
                 <Link
@@ -277,6 +276,8 @@ function Navbar() {
         </Toolbar>
       </Container>
     </AppBar>
+
+    
   );
 }
 export default Navbar;
