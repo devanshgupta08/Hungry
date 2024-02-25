@@ -7,7 +7,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const AboutPage = () => {
   return (
-    <div style={{backgroundColor: '#FFF6E9'}}>
+    <div >
     <div className="m-auto w-2/3 h-auto" >
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-center text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-black">
@@ -24,7 +24,7 @@ const AboutPage = () => {
               aria-controls="panel1-content"
               id="panel1-header"
             >
-              <Typography sx={{ fontWeight: 800, color: "black" }}>
+              <Typography sx={{ fontWeight: 800, color: "#4285F4" }}>
                 What is Bin2Bite
               </Typography>
             </AccordionSummary>
@@ -44,13 +44,13 @@ const AboutPage = () => {
               aria-controls="panel2-content"
               id="panel2-header"
             >
-              <Typography sx={{ fontWeight: 800, color: "black" }}>
+              <Typography sx={{ fontWeight: 800, color: "#4285F4" }}>
                 Our Vision
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                At ZeroWasteFeast, we've recognized the heartbreaking paradox
+                At Bin2Bite, we've recognized the heartbreaking paradox
                 within our society—while vast amounts of food are left uneaten,
                 countless individuals struggle with hunger and poverty. We are
                 not just a website; we are a movement that seeks to redefine the
@@ -64,7 +64,7 @@ const AboutPage = () => {
               aria-controls="panel2-content"
               id="panel2-header"
             >
-              <Typography sx={{ fontWeight: 800, color: "black" }}>
+              <Typography sx={{ fontWeight: 800, color: "#4285F4" }}>
                 Features
               </Typography>
             </AccordionSummary>
@@ -97,7 +97,7 @@ const AboutPage = () => {
               aria-controls="panel2-content"
               id="panel2-header"
             >
-              <Typography sx={{ fontWeight: 800, color: "black" }}>
+              <Typography sx={{ fontWeight: 800, color: "#4285F4" }}>
                 How it Works
               </Typography>
             </AccordionSummary>
@@ -119,13 +119,13 @@ const AboutPage = () => {
               aria-controls="panel2-content"
               id="panel2-header"
             >
-              <Typography sx={{ fontWeight: 800, color: "black" }}>
+              <Typography sx={{ fontWeight: 800, color: "#4285F4" }}>
                 Join Us
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                ZeroWasteFeast isn't just a platform; it's a call to action.
+                Bin2Bite isn't just a platform; it's a call to action.
                 Join us in the fight against food wastage and hunger. Be a part
                 of a community that believes in making a difference—one meal at
                 a time.
@@ -137,7 +137,7 @@ const AboutPage = () => {
         <section>
           <p className="text-xl text-center my-20">
             Let's bridge plates, break chains, and nourish lives together with
-            ZeroWasteFeast.
+            Bin2Bite.
           </p>
         </section>
       </div>

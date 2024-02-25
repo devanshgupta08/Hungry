@@ -17,10 +17,13 @@ import axios from "axios"; // Import Axios for making HTTP requests
 
 let pages = [
   { name: "Home", link: "/" },
+  { name: "Take Food", link: "/GetFood" },
+  { name: "Donate Food", link: "/DFood" },
   { name: "About", link: "/about" },
 ];
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+// const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = [];
 
 function Navbar() {
   const navigate = useNavigate();
@@ -77,7 +80,7 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#40A2E3" }}>
+    <AppBar position="sticky" sx={{ backgroundColor: "#34A853" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
@@ -148,7 +151,7 @@ function Navbar() {
                   </Link>
                 </MenuItem>
               ))}
-               {!isLoggedIn && (
+               {/* {!isLoggedIn && (
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Link
                     to={"/register"}
@@ -166,7 +169,7 @@ function Navbar() {
                     Register
                   </Link>
                 </MenuItem>
-              )}
+              )} */}
               {!isLoggedIn && (
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Link
@@ -182,7 +185,7 @@ function Navbar() {
                       backgroundColor: "lightblue", // Change background color on hover
                     }}
                   >
-                    Login
+                    Login/Register
                   </Link>
                 </MenuItem>
               )}
@@ -219,14 +222,14 @@ function Navbar() {
                 {page.name}
               </Button>
             ))}
-            {!isLoggedIn && (<Button
+            {/* {!isLoggedIn && (<Button
               component={Link}
               to={"/register"}
               sx={{ my: 2, color: "white", display: "block" }}
               onClick={handleCloseNavMenu}
             >
               Register
-            </Button>)}
+            </Button>)} */}
             {!isLoggedIn && (<Button
               component={Link}
               to={"/login"}
@@ -245,12 +248,12 @@ function Navbar() {
             </Button>)}
           </Box>
           <Box sx={{ flexGrow: 0, marginLeft: 3 }}>
-            <Tooltip title="Open settings">
+            {/* <Tooltip title="Open settings"> */}
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg" />
               </IconButton>
-            </Tooltip>
-            <Menu
+            {/* </Tooltip> */}
+            {/* <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -271,7 +274,7 @@ function Navbar() {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> */}
           </Box>
         </Toolbar>
       </Container>

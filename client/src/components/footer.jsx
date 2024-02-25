@@ -3,7 +3,7 @@ import AdbRoundedIcon from "@mui/icons-material/AdbRounded";
 
 const Footer = () => {
   return (
-    <footer className= " text-white py-12"  style={{backgroundColor: '#030F4A'}}>
+    <footer className= " text-white py-12"  style={{backgroundColor: '#34A853'}}>
       <div className="container mx-auto px-4"  >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Column 1 */}
@@ -23,19 +23,27 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-400 text-white">
+                <a href="/about" className="hover:text-gray-400 text-white">
                   {" "}
                   {/* Added text-white class */}
                   About
                 </a>
               </li>
               <li>
-                <a href="/#services" className="hover:text-gray-400 text-white">
+                <a href="/DFood" className="hover:text-gray-400 text-white">
                   {" "}
                   {/* Added text-white class */}
-                  Services
+                  Donate Food
                 </a>
               </li>
+              <li>
+                <a href="/GetFood" className="hover:text-gray-400 text-white">
+                  {" "}
+                  {/* Added text-white class */}
+                  Take Food
+                </a>
+              </li>
+              
             </ul>
           </div>
           {/* Column 3 */}
@@ -48,7 +56,7 @@ const Footer = () => {
               <br />
               Kota, Rajasthan, 325003
               <br />
-              Phone: 123-456-7890
+              Phone: +91-6263302232
               <br />
               Email: bin2bite@gmail.com
             </p>

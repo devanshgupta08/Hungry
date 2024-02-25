@@ -11,18 +11,21 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
+// import "./Timeline.css"
+
 
 const Timeliness = () => {
   return (
     <div>
-      <h1 className=" text-blue-900 font-serif text-4xl md:text-6xl mb-5 font-bold leading-normal text-center mt-32">
+      <h1 className=" text-blue-900 font-serif text-4xl md:text-6xl mb-5 font-bold leading-normal text-center mt-32"
+      style={{ color: "#4285F4" }}>
         How to Reach Us
       </h1>
       <div className="container">
-        <VerticalTimeline>
+        <VerticalTimeline lineColor="#d3d3d3">
           <VerticalTimelineElement
             className="text-center"
-            iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+            iconStyle={{ background: "#DB4437", color: "#fff" }}
             icon={<LoginIcon />}
           >
             <img src="" alt="" />
@@ -32,10 +35,10 @@ const Timeliness = () => {
               exclusive features and stay connected with our platform providing
               your Details
             </p>
-          </VerticalTimelineElement>
+          </VerticalTimelineElement >
           <VerticalTimelineElement
             className="text-center"
-            iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+            iconStyle={{ background: "#F2B50F", color: "#fff" }}
             icon={<FmdGoodRoundedIcon />}
           >
             <h2 className="text-xl font-bold mb-2">Enter the Location</h2>
@@ -47,7 +50,7 @@ const Timeliness = () => {
 
           <VerticalTimelineElement
             className="text-center"
-            iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+            iconStyle={{ background: "#34A853", color: "#fff" }}
             icon={<FoodBankIcon />}
           >
             <h2 className="text-xl font-bold mb-2">
@@ -62,7 +65,7 @@ const Timeliness = () => {
           </VerticalTimelineElement>
           <VerticalTimelineElement
             className="text-center"
-            iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+            iconStyle={{ background: "#4285F4", color: "#fff" }}
             icon={<DoneAllRoundedIcon />}
           >
             <h2 className="text-xl font-bold mb-2">Enjoy your food</h2>
@@ -73,7 +76,7 @@ const Timeliness = () => {
             </p>
           </VerticalTimelineElement>
           <VerticalTimelineElement
-            iconStyle={{ background: "rgb(16, 204, 82)", color: "#fff" }}
+            iconStyle={{ background: "#DB4437", color: "#fff" }}
             icon={<PublicRoundedIcon />}
           />
         </VerticalTimeline>

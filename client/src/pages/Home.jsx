@@ -30,7 +30,7 @@ const Home = () => {
   },[location.state])
   
   return (
-    <div style={{backgroundColor: '#FFFFFF'}}>
+    <div style={{backgroundColor: 'white'}}>
     {/* <h1>{isLoggedIn.toString()}</h1> */}
     {/* <p>{JSON.stringify(user)}</p> */}
       <Hero />

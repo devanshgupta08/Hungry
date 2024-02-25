@@ -17,6 +17,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Paper from '@mui/material/Paper';
 import { useNavigate } from 'react-router-dom';
 import { to } from 'react-spring';
+import { toast } from 'react-toastify'
 
 
 const DfoodForm = () => {
@@ -50,6 +51,7 @@ const DfoodForm = () => {
       );
     } else {
       setError('Geolocation is not supported by this browser.');
+      toast.error('Geolocation is not supported by this browser.');
     }
   }, []); // Empty dependency array ensures this effect runs only once
 
@@ -112,7 +114,7 @@ const DfoodForm = () => {
       });
       console.log(photo);
       console.log(response.data);
-      alert('food donated successfully');
+      toast.success('Food Donation successfully');
       navigate('/');
     } catch (error) {
       console.error('Error:', error);

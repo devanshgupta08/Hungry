@@ -16,6 +16,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import HowToRegIcon from "@mui/icons-material/HowToReg"; //icon in submit
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 function Copyright(props) {
   return (
@@ -52,7 +53,7 @@ export default function SignUp() {
           setIsLoggedIn(true);
           setUser(response.data.data.user);
         } else {
-          console.log("Not logged In");
+          // console.log("Not logged In");
         }
       })
       .catch((error) => {
@@ -76,17 +77,16 @@ export default function SignUp() {
         withCredentials: true,
       });
       console.log("Response:", response.data);
+      toast.success("Registration Successfull ,Login to continue");
       navigate("/login");
     } catch (error) {
       console.error("Error:", error);
       if (error.response && error.response.status === 409) {
         // Status code 409: Conflict
-        alert(
-          "A user with the provided email already exists. Please use a different email."
-        );
+        toast.error("A user with the provided email already exists. Please use a different email.");
       } else {
         // For other status codes or unknown errors
-        alert("An error occurred. Please try again later.");
+        toast.error("An error occurred. Please try again later.");
       }
     }
   };
@@ -121,7 +121,7 @@ export default function SignUp() {
       backgroundPosition: 'center',
       height:"92vh"
     }}>
-  <Grid
+  {/* <Grid
     item
     xs={12}
     md={7}
@@ -131,11 +131,10 @@ export default function SignUp() {
     sx={{
       // mt: 2,
       zIndex : 0,
-      // backgroundImage: `url("https://wallpaper-house.com/data/out/10/wallpaper2you_373651.jpg")`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     }}
-  >
+  > */}
     {/* Add optional placeholder content if needed */}
     {/* <Grid container justifyContent="center" alignItems="center">
       <Grid item>
@@ -143,8 +142,8 @@ export default function SignUp() {
         <p>Content appears here when a background image is not provided.</p>
       </Grid>
     </Grid> */}
-  </Grid>
-  <Grid className='backdrop-filter backdrop-blur-sm bg-opacity-30' item xs={12} md={5} sx={{zIndex : 1, boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',}} display="flex" alignItems="center" >
+  {/* </Grid> */}
+  <Grid className='backdrop-filter backdrop-blur-sm bg-opacity-30' item xs={12} sx={{zIndex : 1, boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',}}>
     <Paper variant="outlined"
         sx={{
           backgroundColor: "transparent",
@@ -164,7 +163,7 @@ export default function SignUp() {
       <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
         <LockOutlinedIcon />
       </Avatar>
-      <Typography component="h1" variant="h5">
+      <Typography component="h1" variant="h5" sx={{ fontWeight: 'bold' }}>
         Sign Up
       </Typography>
       <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -386,6 +385,7 @@ export default function SignUp() {
           type="submit"
           fullWidth
           variant="contained"
+          color = "success"
           sx={{ mt: 3, mb: 2 }}
           disabled={isButtonDisabled}
         >

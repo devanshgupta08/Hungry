@@ -18,7 +18,8 @@ const Services = () => {
   ];
   return (
     <div className="mt-14 ">
-      <h1 className=" text-4xl md:text-6xl mb-5 font-bold leading-normal text-center text-blue-900 font-serif">
+      <h1 className=" text-4xl md:text-6xl mb-5 font-bold leading-normal text-center text-blue-900 font-serif"
+      style={{ color: "#4285F4" }}>
         Our Services
       </h1>
       <div className="flex justify-center items-center gap-20 mt-10 text-center">
