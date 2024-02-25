@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 
 function Hero() {
   const images = [
-    "https://mlnhspzonxv1.i.optimole.com/u3A1TU0-LeWLnpAt/w:auto/h:auto/q:mauto/f:avif/https://tech2impact.com/wp-content/uploads/2021/05/Corporate-Work-Blog-Banner-1.png",
-    "https://images.unsplash.com/photo-1483982258113-b72862e6cff6?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1482189349482-3defd547e0e9?q=80&w=2848&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "../../src/assets/donation12.jpg",
+    "../../src/assets/donation2.jpeg",
+    "../../src/assets/donation5.png",
   ];
   return (
     <div  className="overflow-hidden h-[100vh]">
@@ -23,12 +23,12 @@ function Hero() {
           y: 0,
         }}
         transition={{
-          duration: 0.3,
+          duration: 0.1,
         }}
         className="z-50 flex flex-col justify-center items-center"
       >
         <motion.p className="font-bold text-xl md:text-6xl text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4">
-          The hero section slideshow <br /> nobody asked for
+        Bridging Plates Breaking Chains
         </motion.p>
         <div className="flex">
         <button className="mr-8  px-4 py-2 backdrop-blur-sm border bg-emerald-300/10 border-emerald-500/20 text-white mx-auto text-center rounded-full relative mt-4">

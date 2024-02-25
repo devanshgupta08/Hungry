@@ -9,11 +9,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { Link, useNavigate } from "react-router-dom"; // Import Link from react-router-dom
-import axios from "axios"; // Import Axios for making HTTP requests
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 let pages = [
   { name: "Home", link: "/" },
@@ -22,7 +21,6 @@ let pages = [
   { name: "About", link: "/about" },
 ];
 
-// const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const settings = [];
 
 function Navbar() {
@@ -31,13 +29,13 @@ function Navbar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     axios
       .post("/api/users/isloggedin", {}, { withCredentials: true })
       .then((response) => {
         if (response.data.data.verifiedObj.verified) {
-          console.log(response.data.data.user);
           setIsLoggedIn(true);
           setUser(response.data.data.user);
         } else {
@@ -47,7 +45,24 @@ function Navbar() {
       .catch((error) => {
         console.error("Error:", error);
       });
-  }, []); //scope of error
+
+    // Add event listener when component mounts
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup by removing the event listener when component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    // Set isScrolled to true when user scrolls down more than 20 pixels
+    if (window.scrollY > 20) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
 
   const handleLogout = () => {
     setAnchorElNav(null);
@@ -58,7 +73,6 @@ function Navbar() {
         setIsLoggedIn(false);
       })
       .catch((error) => {
-        // Handle error appropriately
         console.error("Error logging out:", error);
       });
   };
@@ -80,8 +94,16 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: "#34A853" }}>
-      <Container maxWidth="xl">
+    <AppBar
+    position="sticky"
+    sx={{
+      transition: "background-color 0.3s, opacity 0.3s",
+      backgroundColor: isScrolled ? "rgb(0,0,0,0.7)" : "#3f9e59", 
+      opacity: isScrolled ? 0.7 : 1,
+      borderBottom: "5px solid rgba(255, 255, 255, 0.05)",
+    }}
+  >
+      <Container maxWidth="xl" >
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
           <img src="../../../src/assets/new_logo2.jpg" alt="" className="h-10 w-10 rounded-full m-3"/>
