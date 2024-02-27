@@ -33,28 +33,28 @@ const home = asyncHandler(async (req, res) => {
 
 const postFood = asyncHandler(async(req,res)=>{
     //get user details
-    const {address,pincode,state,city,organization,description,latitude,longitude,title} = req.body
+    const { address, pincode, state, city, organization, description, latitude, longitude, title } = req.body;
 
     //validation - not empty
     if([address,pincode,state,city,latitude,longitude].some((field)=>{
-        field?.trim() ===""
-    }))
-    {
+        return field?.trim() ===""
+    })) {
         throw new ApiError(400,"Some fields are Empty");
     }
     
     //check for images
-    let photoLocalPath ="";
+    let photoFile = null;
     // console.log(req.files);
-    if(req.files && Array.isArray(req.files.photo) && req.files.photo.length>0)
-    {
-        photoLocalPath = req.files.photo[0].path
+    if(req.files && Array.isArray(req.files.photo) && req.files.photo.length > 0) {
+        photoFile = req.files.photo[0]; // Assuming only one photo is uploaded
     }
-    console.log(photoLocalPath);
 
     //upload to cloudinary,avatar
-    const photo = await cloudinaryUpload(photoLocalPath)
-    // const photo = "";
+    let photo;
+    if (photoFile) {
+        photo = await cloudinaryUpload(photoFile);
+    }
+
     const owner = req.user;
 
     //create user obj 
@@ -64,7 +64,7 @@ const postFood = asyncHandler(async(req,res)=>{
         state,
         city,
         organization,
-        photo:photo.url,
+        photo: photo ? photo.url : "", // If photo exists, use its URL, otherwise use an empty string
         owner: owner, // Assign the complete user object
         description,
         title,
@@ -72,19 +72,20 @@ const postFood = asyncHandler(async(req,res)=>{
             type:"Point",
             coordinates:[parseFloat(longitude),parseFloat(latitude)]
         }
-    })
+    });
 
     //populate owner field to get the full user object
     
     //remove pwd and refresh token 
-    const createdFood = await Food.findById(food._id)
+    const createdFood = await Food.findById(food._id);
     //check for user creation
     if(!createdFood) {
-        throw new ApiError(500,"Food addition failed")
+        throw new ApiError(500,"Food addition failed");
     }
     // return res
     return res.status(201).json(new ApiResponse(200,createdFood, "Food added Successfully"));
 });
+
 
 
 const getFood = asyncHandler(async(req,res)=>{
