@@ -20,6 +20,7 @@ import { to } from 'react-spring';
 import { toast } from 'react-toastify'
 
 
+
 const DfoodForm = () => {
 
   const defaultTheme = createTheme();
@@ -37,6 +38,23 @@ const DfoodForm = () => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [error, setError] = useState(null);
+
+  async function uploadToCloudinary(file) {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', import.meta.env.VITE_UPLOAD_PRESET); 
+    formData.append('cloud_name', import.meta.env.VITE_CLOUD_NAME); 
+    try {
+      const res = await axios.post(
+        `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUD_NAME}/image/upload`,
+        formData
+      );
+      return res.data.secure_url;
+    } catch (error) {
+      console.error('Error uploading image: ', error);
+      throw new Error('Error uploading image');
+    }
+  }
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -93,6 +111,7 @@ const DfoodForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const photoUrl = await uploadToCloudinary(photo);
       const formDataToSend = new FormData();
       formDataToSend.append('address', address);
       formDataToSend.append('pincode', pincode);
@@ -100,19 +119,19 @@ const DfoodForm = () => {
       formDataToSend.append('city', city);
       formDataToSend.append('organization',organization);
       formDataToSend.append('description', description);
-      formDataToSend.append('photo', photo);
+      formDataToSend.append('photo', photoUrl);
       formDataToSend.append('latitude', latitude);
       formDataToSend.append('longitude', longitude);
       formDataToSend.append('title', title);
-
-      const response = await axios.post('/api/food/postfood', formDataToSend, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      },{
+      const response = await axios.post('/api/food/postfood', formDataToSend,
+       {
+       headers: {
+        'Content-Type': 'application/json' 
+      }
+       },
+      {
         withCredentials: true,
       });
-      console.log(photo);
       console.log(response.data);
       toast.success('Food Donation successfully');
       navigate('/');

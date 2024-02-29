@@ -33,7 +33,7 @@ const home = asyncHandler(async (req, res) => {
 
 const postFood = asyncHandler(async(req,res)=>{
     //get user details
-    const { address, pincode, state, city, organization, description, latitude, longitude, title } = req.body;
+    const { address, pincode, state, city, organization, description, latitude, longitude, title,photo } = req.body;
 
     //validation - not empty
     if([address,pincode,state,city,latitude,longitude].some((field)=>{
@@ -43,17 +43,17 @@ const postFood = asyncHandler(async(req,res)=>{
     }
     
     //check for images
-    let photoFile = null;
+    // let photoFile = null;
     // console.log(req.files);
-    if(req.files && Array.isArray(req.files.photo) && req.files.photo.length > 0) {
-        photoFile = req.files.photo[0]; // Assuming only one photo is uploaded
-    }
+    // if(req.files && Array.isArray(req.files.photo) && req.files.photo.length > 0) {
+    //     photoFile = req.files.photo[0]; // Assuming only one photo is uploaded
+    // }
 
     //upload to cloudinary,avatar
-    let photo;
-    if (photoFile) {
-        photo = await cloudinaryUpload(photoFile);
-    }
+    // let photo;
+    // if (photoFile) {
+    //     photo = await cloudinaryUpload(photoFile);
+    // }
 
     const owner = req.user;
 
@@ -64,7 +64,7 @@ const postFood = asyncHandler(async(req,res)=>{
         state,
         city,
         organization,
-        photo: photo ? photo.url : "", // If photo exists, use its URL, otherwise use an empty string
+        photo: photo ? photo : "", // If photo exists, use its URL, otherwise use an empty string
         owner: owner, // Assign the complete user object
         description,
         title,

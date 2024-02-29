@@ -5,9 +5,6 @@ import { upload } from "../middlewares/multer.js";
 
 const router = Router()
 
-router.route("/postfood").post(verifyJWT,upload.fields([{
-    name: "photo",
-    maxCount: 1
-}]),postFood)
+router.route("/postfood").post(verifyJWT,postFood)
 router.route("/getfood").post(verifyJWT,getFood)
 export default router 

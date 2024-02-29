@@ -9,4 +9,4 @@ const storage = multer.diskStorage({
   })
   
   export const upload = multer({ storage: storage })
-  //return the file name in local storage
+//return the file name in local storage
