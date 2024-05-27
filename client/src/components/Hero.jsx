@@ -3,12 +3,13 @@ import { motion } from "framer-motion";
 import React from "react";
 import { ImagesSlider } from "../components/ui/images-slider";
 import { Link } from "react-router-dom";
+import { donation12, donation2, donation5 } from "../assets";
 
 function Hero() {
   const images = [
-    "../../src/assets/donation12.jpg",
-    "../../src/assets/donation2.jpeg",
-    "../../src/assets/donation5.png",
+    donation12,
+    donation2,
+    donation5,
   ];
   return (
     <div  className="overflow-hidden h-[100vh]">

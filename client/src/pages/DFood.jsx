@@ -3,6 +3,7 @@ import React,{useState,useEffect} from 'react';
 import {useNavigate} from "react-router-dom"
 import  axios from "axios";
 import { toast } from 'react-toastify';
+import { bg_donate } from "../assets";
 
 const DFood = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,7 +28,7 @@ const DFood = () => {
     });
   },[])
   return (
-    <div className='text-white h-[150vh] flex justify-center items-center bg-cover' style={{"backgroundImage": "url('../../src/assets/bg_donate (2).jpg')"}}>
+    <div  className='text-white h-[150vh] flex justify-center items-center bg-cover' style={{ backgroundImage: `url(${bg_donate})` }}>
         <DfoodForm/>
 
     </div>
