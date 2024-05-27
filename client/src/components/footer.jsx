@@ -1,5 +1,6 @@
 import React from "react";
 import AdbRoundedIcon from "@mui/icons-material/AdbRounded";
+import { new_logo2 } from "../assets"
 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Column 1 */}
           <div className="flex flex-col space-y-4">
-          <img src="../../../src/assets/new_logo2.jpg" alt="" className="h-10 w-10 rounded-full m-3"/>
+          <img src={new_logo2} alt="" className="h-10 w-10 rounded-full m-3"/>
             <h1 className="text-white text-xl font-bold ">Bin2Bite</h1>
           </div>
           {/* Column 2 */}
