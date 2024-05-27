@@ -45,7 +45,7 @@ export default function SignIn() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   useEffect(() => {
-    axios.post('/api/users/isloggedin',{},{withCredentials: true})
+    axios.post('https://bin2byte-back-final-dby6.vercel.app/api/users/isloggedin',{},{withCredentials: true})
     .then(response => {
       if(response.data.data.verifiedObj.verified)
       { 
