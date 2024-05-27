@@ -13,6 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { new_logo2 } from "../assets";
 
 let pages = [
   { name: "Home", link: "/" },
@@ -106,7 +107,7 @@ function Navbar() {
       <Container maxWidth="xl" >
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
-          <img src="../../../src/assets/new_logo2.jpg" alt="" className="h-10 w-10 rounded-full m-3"/>
+          <img src={new_logo2} alt="" className="h-10 w-10 rounded-full m-3"/>
           <Typography
             className="red"
             variant="h6"

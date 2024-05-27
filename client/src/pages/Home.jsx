@@ -33,7 +33,7 @@ const Home = () => {
     <div style={{backgroundColor: 'white'}}>
     {/* <h1>{isLoggedIn.toString()}</h1> */}
     {/* <p>{JSON.stringify(user)}</p> */}
-      {/* <Hero />*/}
+      <Hero />
       <Whatwedo />
       <Services />
       <Timeliness /> 
