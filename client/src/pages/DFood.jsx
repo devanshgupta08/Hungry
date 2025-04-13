@@ -1,4 +1,4 @@
-import DfoodForm from "@/components/DfoodForm"
+import DfoodForm from "../components/DfoodForm"
 import React,{useState,useEffect} from 'react';
 import {useNavigate} from "react-router-dom"
 import  axios from "axios";
@@ -10,7 +10,7 @@ const DFood = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
-    axios.post('/api/users/isloggedin',{},{withCredentials: true})
+    axios.post(`${import.meta.env.VITE_BACKENDURL}/api/users/isloggedin`,{},{withCredentials: true})
     .then(response => {
       if(response.data.data.verifiedObj.verified)
       { 

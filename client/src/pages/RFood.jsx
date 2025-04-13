@@ -1,4 +1,4 @@
-import RfoodForm from "@/components/RfoodForm"
+import RfoodForm from "../components/RfoodForm"
 
 const RFood = () => {
   return (

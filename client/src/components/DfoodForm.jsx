@@ -123,15 +123,15 @@ const DfoodForm = () => {
       formDataToSend.append('latitude', latitude);
       formDataToSend.append('longitude', longitude);
       formDataToSend.append('title', title);
-      const response = await axios.post('/api/food/postfood', formDataToSend,
-       {
-       headers: {
-        'Content-Type': 'application/json' 
-      }
-       },
-      {
-        withCredentials: true,
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKENDURL}/api/food/postfood`,
+        formDataToSend,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          withCredentials: true
+        });
       console.log(response.data);
       toast.success('Food Donation successfully');
       navigate('/');

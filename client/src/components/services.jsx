@@ -1,4 +1,4 @@
-import Cards from "@/components/cards";
+import Cards from "./cards.jsx";
 const Services = () => {
   const data = [
     {

@@ -34,7 +34,7 @@ function Navbar() {
 
   useEffect(() => {
     axios
-      .post("/api/users/isloggedin", {}, { withCredentials: true })
+      .post(`${import.meta.env.VITE_BACKENDURL}/api/users/isloggedin`, {}, { withCredentials: true })
       .then((response) => {
         if (response.data.data.verifiedObj.verified) {
           setIsLoggedIn(true);
@@ -68,7 +68,7 @@ function Navbar() {
   const handleLogout = () => {
     setAnchorElNav(null);
     axios
-      .post("/api/users/logout")
+      .post(`${import.meta.env.VITE_BACKENDURL}/api/users/logout`, {}, { withCredentials: true })
       .then((response) => {
         console.log("Logout Successfull");
         setIsLoggedIn(false);

@@ -1,10 +1,10 @@
 import { Container } from "postcss";
 import React,{useEffect,useState} from "react";
 import { Button } from "@mui/material";
-import Hero from "@/components/Hero";
-import Services from "@/components/services";
-import Timeliness from "@/components/Timeline";
-import Whatwedo from "@/components/Whatwedo";
+import Hero from "../components/Hero";
+import Services from "../components/services";
+import Timeliness from "../components/Timeline";
+import Whatwedo from "../components/Whatwedo";
 import {useLocation} from 'react-router-dom';
 import axios from "axios";
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
   const [user, setUser] = useState(null);
   const location = useLocation();
   useEffect(() => {
-    axios.post('/api/users/isloggedin',{},{withCredentials: true})
+    axios.post(`${import.meta.env.VITE_BACKENDURL}/api/users/isloggedin`,{},{withCredentials: true})
     .then(response => {
       if(response.data.data.verifiedObj.verified)
       { 

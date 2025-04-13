@@ -18,7 +18,7 @@ const GetFood = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
-    axios.post('/api/users/isloggedin',{},{withCredentials: true})
+    axios.post(`${import.meta.env.VITE_BACKENDURL}/api/users/isloggedin`,{},{withCredentials: true})
     .then(response => {
       if(response.data.data.verifiedObj.verified)
       { 
@@ -59,7 +59,7 @@ const GetFood = () => {
   const fetchData = async () => {
     try {
       if (latitude !== null && longitude !== null) {
-        const response = await axios.post('/api/food/getfood', { latitude, longitude, setDistance: radius }, {
+        const response = await axios.post(`${import.meta.env.VITE_BACKENDURL}/api/food/getfood`, { latitude, longitude, setDistance: radius }, {
           withCredentials: true,
         });
         setData(response.data.data);

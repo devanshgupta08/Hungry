@@ -46,7 +46,7 @@ export default function SignUp() {
   const [user, setUser] = useState(null);
   useEffect(() => {
     axios
-      .post("/api/users/isloggedin", {}, { withCredentials: true })
+      .post(`${import.meta.env.VITE_BACKENDURL}/api/users/isloggedin`, {}, { withCredentials: true })
       .then((response) => {
         if (response.data.data.verifiedObj.verified) {
           console.log(response.data.data.user);
@@ -73,7 +73,7 @@ export default function SignUp() {
     };
 
     try {
-      const response = await axios.post("/api/users/register", obj, {
+      const response = await axios.post(`${import.meta.env.VITE_BACKENDURL}/api/users/register`, obj, {
         withCredentials: true,
       });
       console.log("Response:", response.data);

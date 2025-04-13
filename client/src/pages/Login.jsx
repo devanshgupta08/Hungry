@@ -45,7 +45,7 @@ export default function SignIn() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   useEffect(() => {
-    axios.post('/api/users/isloggedin',{},{withCredentials: true})
+    axios.post(`${import.meta.env.VITE_BACKENDURL}/api/users/isloggedin`,{},{withCredentials: true})
     .then(response => {
       if(response.data.data.verifiedObj.verified)
       { 
@@ -71,7 +71,7 @@ export default function SignIn() {
     };
 
     try {
-      const response = await axios.post('/api/users/login', obj, { withCredentials: true });
+      const response = await axios.post(`${import.meta.env.VITE_BACKENDURL}/api/users/login`, obj, { withCredentials: true });
       console.log(response);
       toast.success("Logged In Successfully");
       navigate('/');
