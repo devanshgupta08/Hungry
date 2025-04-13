@@ -23,7 +23,8 @@ const generateTokens = async(userId) =>{
 }
 const options ={
     httpOnly: true,
-    secure: true
+    secure: true,
+    sameSite: "None",
 }
 const home = asyncHandler(async (req, res) => {
     return res
